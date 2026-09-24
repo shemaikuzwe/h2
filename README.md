@@ -23,6 +23,8 @@ incus profile device set default root pool=h2
 incus storage delete default
 incus network create incusbr0
 incus profile device add default eth0 nic network=incusbr0 name=eth0
+# images without the incus agent (centos) refuse to boot without this disk
+incus profile device add default agent disk source=agent:config
 
 # (Optional if docker installed ) docker sets INPUT/FORWARD policy to DROP, which blocks DHCP/NAT for the bridge
 sudo iptables -I INPUT -i incusbr0 -j ACCEPT

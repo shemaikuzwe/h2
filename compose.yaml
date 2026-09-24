@@ -1,0 +1,10 @@
+
+services:
+  lxconsole:
+    image: 'penninglabs/lxconsole:latest'
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - /home/shema/lxbackups:/opt/lxconsole/backups
+      - ./certs:/opt/lxconsole/certs
+      - ./server:/opt/lxconsole/instance
