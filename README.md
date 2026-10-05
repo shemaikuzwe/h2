@@ -29,6 +29,12 @@ sudo iptables -I INPUT -i incusbr0 -j ACCEPT
 sudo iptables -I FORWARD -i incusbr0 -j ACCEPT
 sudo iptables -I FORWARD -o incusbr0 -j ACCEPT
 # persist: sudo apt install iptables-persistent && sudo netfilter-persistent save
+
+# (Optioanl if usin ufw) allows instances to get ip.
+sudo ufw allow in on incusbr0
+sudo ufw route allow in on incusbr0
+sudo ufw route allow out on incusbr0
+sudo ufw status verbose
 ```
 
 Images are pulled from the `images:` remote on first use (`ubuntu24`, `ubuntu22`, `centos10`).
